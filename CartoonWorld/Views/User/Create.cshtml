@@ -1,0 +1,11 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model User 
+<form asp-action="CreatePost" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control" asp-for="@Model.FirstName"/>
+    </div>
+</form>

@@ -1,0 +1,46 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+    color:white;
+  }
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+    background-color: #212032;
+    color: white;
+}
+img {
+    border-radius: 0.2em;
+}
+table,th,tr,td {
+    color: white;
+}
+.home-img {
+    cursor: pointer;
+    border: 1px solid white;
+}
+.home-img:hover {
+        transition: 1s;
+        box-shadow: 6px 10px 15px -6px #000000;
+}
+.custom-button {
+    background-color: #3a4a7e;
+    color: white;
+    padding: 8px;
+    border: 1px solid transparent;
+    width: 8em;
+}
+
+    .custom-button:hover, select:hover {
+        transition: 0.8s;
+        border: 1px solid white;
+        border-radius: 0.2em;
+    }

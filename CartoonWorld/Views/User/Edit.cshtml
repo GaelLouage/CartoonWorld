@@ -1,0 +1,121 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model User
+
+@*<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="@Model.FirstName">FirstName</label>
+        <input type="text" class="form-control" placeholder="Firstame">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.LastName">LastName</label>
+        <input type="text" class="form-control" placeholder="LastName">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Password">Password</label>
+        <input type="password" class="form-control" asp-for="@Model.Password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Email">E-mail</label>
+        <input type="email" class="form-control" asp-for="@Model.Email" placeholder="E-mail">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Role">Select a Role</label>
+        <select asp-for="@Model.Role" class="form-control">
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Subscription">Subscription</label>
+        <input type="text" class="form-control" asp-for="@Model.Subscription" placeholder="Subscription">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+*@
+<section>
+    <div class="container vh-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Edit User</p>
+
+                                <form asp-action="Edit" asp-controller="User" method="post" class="mx-1 mx-md-4">
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" class="form-control" asp-for="@Model.FirstName" required />
+                                            <label class="form-label" asp-for="@Model.FirstName">Your Fisrtname</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" class="form-control" asp-for="@Model.LastName" required />
+                                            <label class="form-label" asp-for="@Model.LastName">Lastname</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="password" class="form-control" asp-for="@Model.Password" required value="@Model.Password"/>
+                                            <label class="form-label" asp-for="@Model.Password">Password</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="email" class="form-control" asp-for="@Model.Email" required />
+                                            <label class="form-label" asp-for="@Model.Email">E-mail</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-address-card fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+
+                                            <label asp-for="@Model.Role">Select a Role</label>
+                                            <select asp-for="@Model.Role" class="form-control">
+                                                <option value="Admin">Admin</option>
+                                                <option value="User">User</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-rocket fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <input type="text" class="form-control" asp-for="@Model.Subscription" required />
+                                            <label class="form-label" asp-for="@Model.Subscription">Subscription</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button type="submit" class="custom-button">Edit</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

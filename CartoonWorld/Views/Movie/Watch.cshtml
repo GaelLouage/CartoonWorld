@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Movie
+<style>
+    video {
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          min-width: 100%; 
+          min-height: 100%;
+    }
+    footer{ display:none;}
+</style>
+<video width="320" height="240" controls>
+  <source src="~/Movies/mov_bbb.mp4" type="video/mp4">
+  <source src="~/Movies/mov_bbb.mp4" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+
+<script>
+var video = document.getElementsByTagName("video")[0];
+
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    alert("tset");
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>

@@ -1,0 +1,93 @@
+﻿@using CartoonWorld.Controllers
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CartoonWorld</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CartoonWorld.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+    
+        <nav style="background-color:#3a4a7e" class="navbar navbar-expand-lg navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">CartoonWorld</a>
+                <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon text-light"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Board</a>
+                        </li>
+                           <li class="nav-item" style="width: 50%; margin:0 auto;">
+                              <form class="d-flex" asp-action="Index" asp-controller="Home">
+                                  <input class="form-control me-2" type="search" name="LijstFilms"  placeholder="Search" aria-label="Search">
+                                  <button class="btn btn-outline-succes" type="submit"><i style="font-size:24px;text-align:right; color:white" class="fa">&#xf002;</i></button>
+                             </form>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <div class="dropdown text-white " style="margin-right: 1em;">
+                                    <button class="btn  dropdown-toggle text-light" style="background-color:#3a4a7e" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Welkom @User.Identity.Name
+                                    </button>
+                                     <div class="dropdown-menu text-light align-text-top" aria-labelledby="dropdownMenuLink">
+                                          <a class="dropdown-item" asp-route-id="@HomeController.lijstGebruikers.FirstOrDefault(x => x.FirstName == User.Identity.Name).Id" asp-controller="User" asp-action="Detail">My List</a>
+                                          <a class="dropdown-item" asp-route-id="@HomeController.lijstGebruikers.FirstOrDefault(x => x.FirstName == User.Identity.Name).Id" asp-controller="User" asp-action="DetailUser">Panel</a>
+                                           @if (User.IsInRole("Admin"))
+                                           {
+                                                <p style="border-bottom: 1px solid lightgrey; margin-top: 1em;"></p>
+                                                <p class="text-black" style="text-align:center; font-weight:bold">Admin menu</p>
+                                               <a class="dropdown-item" style="color: green; font-weight:bold;" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                                               <a class="dropdown-item" style="color: green; font-weight:bold;"  asp-area="" asp-controller="Movie" asp-action="Index">Movies Admin</a>
+                                           }
+                                          <p style="border-bottom: 1px solid lightgrey; margin-top: 1em;"></p>
+                                          <a class="dropdown-item " asp-controller="Home" asp-action="Logout">Logout</a>
+                                     </div>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Secured">Login</a>
+                            </li class="nav-item">
+                            <li>
+                                  <a class="nav-link text-light" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                            </li>
+                        }
+                     
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <div class="content">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container d-flex justify-content-center">
+            &copy; 2022 - CartoonWorld - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

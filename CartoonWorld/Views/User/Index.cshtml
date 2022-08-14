@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<User>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Subscription</th>
+      <th scope="col">UserRole</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Detail</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach(var item in @Model)
+        {
+           <tr>
+             <th>@item.FirstName</th>
+             <td>@item.LastName</td>
+             <td>@item.Subscription</td>
+             <td>@item.Role</td>
+              <td><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                 <td><a asp-action="Detail" asp-route-id="@item.Id">Detail</a></td>
+               <td><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+            </tr>
+        }
+  </tbody>
+</table>

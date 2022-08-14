@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+<style>
+    .sort-box {
+       display: flex;
+       justify-content: flex-end;
+       width: 94%;
+         margin: 1em;
+    }
+   select {
+  background-color:#3a4a7e;
+  color:white;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+option {
+    cursor: pointer;
+}
+
+
+</style>
+@model List<Movie>
+<div class="sort-box">
+<form asp-action="IndexSearch" asp-controller="Home" method="post">
+   <select class="custom-select" name="sortOrder">
+        <option value="" selected disabled hidden>Choose here</option>
+        <option value="Titel A-Z">Titel A-Z</option>
+         <option value="Titel Z-A">Titel Z-A</option>
+         <option value="ReleaseDate">Releasedate</option>
+         <option value="Genre">Genre</option>
+        
+    </select>
+<input class="custom-button"  type="submit" value="Sort"/>
+</form>
+</div>
+
+<div class="container-fluid text-center">
+    <div class="row">
+@foreach(var item in @Model)
+{
+
+  <a class="col-sm  mt-3"  asp-action="Detail" asp-controller="Movie" asp-route-id="@item.Id"><img class="home-img" src="@item.Image" alt="@item.Titel"></a>
+
+}
+@*@foreach(var item in @Model)
+{
+  <a class="col-sm  mt-3"   asp-action="Detail" asp-controller="Movie" asp-route-id="@item.Id"><img class="home-img" src="@item.Image" alt="@item.Titel"></a>
+}
+@foreach(var item in @Model.Take(5))
+{
+  <a class="col-sm  mt-3"   asp-action="Detail" asp-controller="Movie" asp-route-id="@item.Id"><img class="home-img" src="@item.Image" alt="@item.Titel"></a>
+}*@
+</div>
+</div>

@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Movie>
+<div>
+    <h2>Create New Movie</h2>
+    <a asp-action="Create" class="btn btn-primary">Create</a>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Genre</th>
+      <th scope="col">About</th>
+        <th scope="col">Image</th>
+      <th scope="col">Releasedate</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Detail</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach(var item in @Model)
+        {
+           <tr>
+             <th>@item.Titel</th>
+             <td>@item.Genre</td>
+             <td>@item.About</td>
+              <td><img src="@item.Image" alt="@item.Titel"></td>
+             <td>@item.ReleaseDate.ToShortDateString()</td>
+              <td><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                 <td><a asp-action="Detail" asp-route-id="@item.Id">Detail</a></td>
+               <td><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                @if(User.Identity.IsAuthenticated)
+                {
+                     <td><a asp-action="AddToList" asp-route-id="@item.Id">Add to list</a>Add to list</td>
+                }
+            </tr>
+        }
+  </tbody>
+</table>
